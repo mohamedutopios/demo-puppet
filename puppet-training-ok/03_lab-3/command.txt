@@ -1,0 +1,12 @@
+cat /etc/puppetlabs/puppet/puppet.conf
+cat /etc/puppetlabs/puppetserver/conf.d/puppetserver.conf
+cat /etc/puppetlabs/puppetserver/conf.d/puppetserver.conf
+cat /etc/puppetlabs/puppetserver/conf.d/global.conf
+puppet config print config
+puppet config print
+puppet config print runinterval
+puppet config print manifest
+puppet config print --section=agent
+puppet config print --section=server
+puppet config print --section=main
+cat /etc/puppetlabs/puppet/puppet.conf

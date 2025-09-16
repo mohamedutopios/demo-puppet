@@ -1,0 +1,1 @@
+Welcome to <%=$app%>-<%=$version%>.pp By <%=$author%> on <%= $facts['fqdn'] %>

@@ -1,0 +1,1 @@
+Welcome to <%=$app%>-<%=$version%>.pp By Dirane Willy TAFEN on <%= $facts['fqdn'] %> On dev environment

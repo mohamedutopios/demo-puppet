@@ -1,0 +1,19 @@
+# as root user
+yum -y install update
+yum -y  update
+yum install -y https://yum.puppet.com/puppet-release-el-8.noarch.rpm
+yum install -y puppetserver-7.2.1-1.el8.noarch
+echo "127.0.1.1 puppet" >> /etc/hosts
+# si nécessaire sed -i 's/2g/1g/g' /etc/sysconfig/puppetserver
+systemctl enable --now puppetserver puppet
+systemctl enable --now firewalld
+firewall-cmd --zone=public --permanent --add-service=http --add-service=https --add-service=ssh
+firewall-cmd --zone=public --permanent --add-port 8140/tcp
+firewall-cmd --reload
+systemctl status puppetserver.service
+systemctl status puppet
+
+#♀ Login and logout
+puppet agent -t
+systemctl status puppet
+systemctl status puppetserver.service
