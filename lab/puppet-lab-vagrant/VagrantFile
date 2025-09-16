@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |config|
+    # Box de base
+    config.vm.box = "bento/ubuntu-22.04"
+  
+    # Réseau privé pour communication interne
+    config.vm.network "private_network", type: "dhcp"
+  
+    # Provider VMware
+    config.vm.provider "vmware_desktop" do |v|
+      v.cpus = 2
+      v.memory = 2048
+    end
+  
+    # Puppet Master
+    config.vm.define "puppetmaster" do |master|
+      master.vm.hostname = "puppetmaster"
+      master.vm.network "private_network", ip: "192.168.56.10"
+      master.vm.provision "shell", path: "provision/master.sh"
+    end
+  
+    # Puppet Agent 1
+    config.vm.define "puppetagent1" do |agent|
+      agent.vm.hostname = "puppetagent1"
+      agent.vm.network "private_network", ip: "192.168.56.11"
+      agent.vm.provision "shell", path: "provision/agent.sh"
+    end
+  
+    # Puppet Agent 2
+    config.vm.define "puppetagent2" do |agent|
+      agent.vm.hostname = "puppetagent2"
+      agent.vm.network "private_network", ip: "192.168.56.12"
+      agent.vm.provision "shell", path: "provision/agent.sh"
+    end
+  end
