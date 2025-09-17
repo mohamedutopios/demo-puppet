@@ -1,0 +1,69 @@
+
+		<head>
+			<style type="text/css" media="screen">
+				body,html{font-family:var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);font-size:var(--markdown-font-size,14px);padding:0 26px;line-height:var(--markdown-line-height,22px);word-wrap:break-word}body{padding-top:1em}h1,h2,h3,h4,h5,h6,ol,p,pre,ul{margin-top:0}h2,h3,h4,h5,h6{font-weight:400;margin-bottom:.2em}img{max-width:100%;max-height:100%}a{text-decoration:none}a:hover{text-decoration:underline}a:focus,input:focus,select:focus,textarea:focus{outline:1px solid -webkit-focus-ring-color;outline-offset:-1px}p{margin-bottom:.7em}ol,ul{margin-bottom:.7em}hr{border:0;height:2px;border-bottom:2px solid}h1{padding-bottom:.3em;line-height:1.2;border-bottom-width:1px;border-bottom-style:solid;font-weight:400}table{border-collapse:collapse}th{text-align:left;border-bottom:1px solid}td,th{padding:5px 10px}table>tbody>tr+tr>td{border-top:1px solid}blockquote{margin:0 7px 0 5px;padding:0 16px 0 10px;border-left-width:5px;border-left-style:solid}code{font-family:var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);font-size:1em;line-height:1.357em}body.wordWrap pre{white-space:pre-wrap}pre.hljs code>div,pre:not(.hljs){padding:16px;border-radius:3px;overflow:auto}pre code{color:var(--vscode-editor-foreground);tab-size:4}
+			</style>
+		</head>
+		<body>
+			<h1 id="exercices-puppet--ressources">Exercices Puppet – Ressources</h1>
+<h2 id="🔹-exercice-1--package--service">🔹 Exercice 1 : Package + Service</h2>
+<p>👉 Objectif : Installer mysql-server et demarre le service.</p>
+<ol>
+<li><p><strong>Installe</strong> le package <code>mysql-server</code>.</p>
+</li>
+<li><p><strong>S’assure</strong> que le service <code>mysql</code> est :</p>
+<ul>
+<li>en cours d’exécution,</li>
+<li>activé au démarrage,</li>
+<li>redémarré automatiquement si le package change.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="🔹-exercice-2--file-simple">🔹 Exercice 2 : File simple</h2>
+<p>👉 Objectif : Gérer un fichier <code>/etc/motd</code>.</p>
+<ul>
+<li>Contenu : <code>&quot;Bienvenue sur ce serveur Puppet\n&quot;</code>.</li>
+<li>Permissions : propriétaire <code>root</code>, mode <code>0644</code>.</li>
+</ul>
+<p>💡 Vérifie avec <code>cat /etc/motd</code>.</p>
+<hr>
+<h2 id="🔹-exercice-3--file--notification">🔹 Exercice 3 : File + Notification</h2>
+<p>👉 Objectif : Déployer une page d’accueil.</p>
+<ul>
+<li>Fichier <code>/var/www/html/index.html</code>.</li>
+<li>Contenu : <code>&quot;Hello depuis Puppet&quot;</code>.</li>
+<li><strong>Notifie</strong> le service <code>nginx</code> (il doit redémarrer si le fichier change).</li>
+</ul>
+<p>💡 Astuce : utilise <code>notify =&gt; Service[&#39;nginx&#39;]</code>.</p>
+<hr>
+<h2 id="🔹-exercice-4--user--group">🔹 Exercice 4 : User + Group</h2>
+<p>👉 Objectif : Créer un utilisateur <code>devuser</code> appartenant au groupe <code>developers</code>.</p>
+<ul>
+<li>UID : 1500</li>
+<li>Home : <code>/home/devuser</code></li>
+<li>Shell : <code>/bin/bash</code></li>
+</ul>
+<p>💡 Vérifie avec <code>id devuser</code>.</p>
+<hr>
+<h2 id="🔹-exercice-5--exec">🔹 Exercice 5 : Exec</h2>
+<p>👉 Objectif : Lancer une commande une seule fois avec Puppet.</p>
+<ul>
+<li>Exécuter <code>echo &quot;Exo Puppet&quot; &gt; /tmp/exo_puppet.txt</code></li>
+<li>Mais seulement si le fichier n’existe pas.</li>
+</ul>
+<p>💡 Astuce : utilise <code>creates =&gt; &quot;/tmp/exo_puppet.txt&quot;</code>.</p>
+<hr>
+<h2 id="🔹-exercice-6--cron">🔹 Exercice 6 : Cron</h2>
+<p>👉 Objectif : Planifier une tâche cron qui écrit la date dans <code>/tmp/puppet_date.log</code> toutes les minutes.</p>
+<p>💡 Vérifie avec <code>crontab -l</code>.</p>
+<hr>
+<h2 id="🔹-exercice-8--host">🔹 Exercice 8 : Host</h2>
+<p>👉 Objectif : Ajouter une entrée dans <code>/etc/hosts</code>.</p>
+<ul>
+<li><code>192.168.1.50</code> → <code>app.local</code></li>
+</ul>
+<p>💡 Vérifie avec <code>cat /etc/hosts</code>.</p>
+<hr>
+
+		</body>

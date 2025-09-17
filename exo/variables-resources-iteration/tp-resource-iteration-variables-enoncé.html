@@ -1,0 +1,42 @@
+
+		<head>
+			<style type="text/css" media="screen">
+				body,html{font-family:var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);font-size:var(--markdown-font-size,14px);padding:0 26px;line-height:var(--markdown-line-height,22px);word-wrap:break-word}body{padding-top:1em}h1,h2,h3,h4,h5,h6,ol,p,pre,ul{margin-top:0}h2,h3,h4,h5,h6{font-weight:400;margin-bottom:.2em}img{max-width:100%;max-height:100%}a{text-decoration:none}a:hover{text-decoration:underline}a:focus,input:focus,select:focus,textarea:focus{outline:1px solid -webkit-focus-ring-color;outline-offset:-1px}p{margin-bottom:.7em}ol,ul{margin-bottom:.7em}hr{border:0;height:2px;border-bottom:2px solid}h1{padding-bottom:.3em;line-height:1.2;border-bottom-width:1px;border-bottom-style:solid;font-weight:400}table{border-collapse:collapse}th{text-align:left;border-bottom:1px solid}td,th{padding:5px 10px}table>tbody>tr+tr>td{border-top:1px solid}blockquote{margin:0 7px 0 5px;padding:0 16px 0 10px;border-left-width:5px;border-left-style:solid}code{font-family:var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);font-size:1em;line-height:1.357em}body.wordWrap pre{white-space:pre-wrap}pre.hljs code>div,pre:not(.hljs){padding:16px;border-radius:3px;overflow:auto}pre code{color:var(--vscode-editor-foreground);tab-size:4}
+			</style>
+		</head>
+		<body>
+			<h1 id="puppet--variables-conditions-ressources-et-itérations">Puppet – Variables, Conditions, Ressources et Itérations</h1>
+<h2 id="objectif">Objectif</h2>
+<p>Déployer une configuration qui :</p>
+<ol>
+<li>Installe <strong>MySQL</strong> sur Debian/Ubuntu, ou <strong>MariaDB</strong> sur RedHat/Alma.</li>
+<li>Active et démarre le service correspondant.</li>
+<li>Crée un fichier <code>/etc/db.conf</code> indiquant le nom du SGBD installé.</li>
+<li>Crée plusieurs utilisateurs développeurs à partir d’un tableau Puppet.</li>
+</ol>
+<hr>
+<h2 id="énoncé">Énoncé</h2>
+<ol>
+<li><p>Déclare une variable <code>$db_package</code> et <code>$db_service</code> selon l’OS (via <code>case</code>).</p>
+</li>
+<li><p>Installe le bon package.</p>
+</li>
+<li><p>Démarre et active le service.</p>
+</li>
+<li><p>Déploie <code>/etc/db.conf</code> avec :</p>
+<pre><code>Database installed: &lt;nom_du_package&gt;
+</code></pre>
+</li>
+<li><p>Crée un tableau de développeurs :</p>
+<pre><code class="language-puppet">$devs = [&#39;alice&#39;, &#39;bob&#39;, &#39;charlie&#39;]
+</code></pre>
+</li>
+<li><p>Utilise une <strong>itération</strong> pour créer un utilisateur par élément du tableau, avec :</p>
+<ul>
+<li>Home <code>/home/&lt;nom&gt;</code></li>
+<li>Shell <code>/bin/bash</code></li>
+</ul>
+</li>
+</ol>
+
+		</body>

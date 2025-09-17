@@ -67,16 +67,6 @@
 
 ---
 
-## 🔹 Exercice 7 : Mount
-
-👉 Objectif : Monter une partition (si tu as un disque secondaire `/dev/sdb1`).
-
-* Point de montage : `/mnt/data`
-* Type : ext4
-* Monté au boot.
-
----
-
 ## 🔹 Exercice 8 : Host
 
 👉 Objectif : Ajouter une entrée dans `/etc/hosts`.
