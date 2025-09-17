@@ -1,0 +1,10 @@
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+
+hierarchy:
+  - name: "Per-environment data"
+    path: "environments/%{::environment}.yaml"
+  - name: "Common"
+    path: "common.yaml"

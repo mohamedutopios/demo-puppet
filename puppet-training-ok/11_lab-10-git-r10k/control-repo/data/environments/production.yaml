@@ -1,0 +1,10 @@
+---
+classes:
+  - postgresql::server
+
+postgresql::server::postgres_password: "superpassword"
+
+postgresql::server::db:
+  mydb:
+    user: "myuser"
+    password: "%{lookup('postgresql::server::postgres_password')}"

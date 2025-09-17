@@ -1,0 +1,5 @@
+---
+classes:
+  - apache
+
+apache::mpm_module: "prefork"
